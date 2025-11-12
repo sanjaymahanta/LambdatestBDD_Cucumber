@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="0" total="2" passed="0" failed="2" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2025-11-12T12:13:09 IST" name="Suite" finished-at="2025-11-12T12:14:05 IST" duration-ms="55818">
+    <groups>
+      <group name="cucumber">
+        <method signature="CustomizeTestNGCucumberRunner.runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.runner.Runner@458342d3]" name="runScenario" class="com.baseclass.CustomizeTestNGCucumberRunner"/>
+      </group> <!-- cucumber -->
+    </groups>
+    <test started-at="2025-11-12T12:13:09 IST" name="Test" finished-at="2025-11-12T12:14:05 IST" duration-ms="55818">
+      <class name="com.runner.Runner">
+        <test-method is-config="true" signature="setUpClass(org.testng.ITestContext)[pri:0, instance:com.runner.Runner@458342d3]" started-at="2025-11-12T12:13:09 IST" name="setUpClass" finished-at="2025-11-12T12:13:11 IST" duration-ms="1405" status="PASS">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[org.testng.TestRunner@7e27f603]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpClass -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.runner.Runner@458342d3]" started-at="2025-11-12T12:13:11 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2025-11-12T12:13:37 IST" duration-ms="26437" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Verify sent message appears in inbox conversation and navigation back to Jobs page"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Verify user workflows under Career and Messaging modules"]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.RuntimeException">
+            <message>
+              <![CDATA[ Could not connect to Selenium Grid after multiple attempts.]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.RuntimeException:  Could not connect to Selenium Grid after multiple attempts.
+at com.baseclass.DriverManager.createRemoteDriver(DriverManager.java:108)
+at com.baseclass.DriverManager.createDriverFromConfig(DriverManager.java:30)
+at com.hooks.Hooks.beforeScenario(Hooks.java:21)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.RuntimeException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method signature="runScenario(io.cucumber.testng.PickleWrapper,io.cucumber.testng.FeatureWrapper)[pri:0, instance:com.runner.Runner@458342d3]" started-at="2025-11-12T12:13:37 IST" name="runScenario" description="Runs Cucumber Scenarios" data-provider="scenarios" finished-at="2025-11-12T12:14:02 IST" duration-ms="25183" status="FAIL">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA["Verify career path navigation, selection, and recently viewed careers display"]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA["Verify user workflows under Career and Messaging modules"]]>
+              </value>
+            </param>
+          </params>
+          <exception class="java.lang.RuntimeException">
+            <message>
+              <![CDATA[ Could not connect to Selenium Grid after multiple attempts.]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.RuntimeException:  Could not connect to Selenium Grid after multiple attempts.
+at com.baseclass.DriverManager.createRemoteDriver(DriverManager.java:108)
+at com.baseclass.DriverManager.createDriverFromConfig(DriverManager.java:30)
+at com.hooks.Hooks.beforeScenario(Hooks.java:21)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.RuntimeException -->
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- runScenario -->
+        <test-method is-config="true" signature="tearDownClass()[pri:0, instance:com.runner.Runner@458342d3]" started-at="2025-11-12T12:14:02 IST" name="tearDownClass" finished-at="2025-11-12T12:14:05 IST" duration-ms="2704" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDownClass -->
+      </class> <!-- com.runner.Runner -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
+</testng-results>
