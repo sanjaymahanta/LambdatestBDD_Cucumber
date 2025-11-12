@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import com.baseclass.DriverManager;
+import com.utility.Log;
 import com.utility.WaitUtils;
 
 
@@ -25,6 +26,7 @@ public class HomePage extends DriverManager{
 		
 		
 		public HomePage(){
+			
 			PageFactory.initElements(webDriver.get(), this);
 		}
 		
@@ -32,13 +34,18 @@ public class HomePage extends DriverManager{
 		//Action Methods
 		
 		
-	public void AddRemove() {
+	public void AddRemoveLink() {
 		WaitUtils.clickWithFluentWait(addRemove);
+		Log.info("click on add/remove link");
+	
 	}
 	
 	
-	public void addElement() {
-		WaitUtils.clickWithFluentWait(addElementButton);
+	public void addElementButton() {
+		Log.info("Page is open");
+			WaitUtils.clickWithFluentWait(addElementButton);
+		
+		
 	}
 			
 		

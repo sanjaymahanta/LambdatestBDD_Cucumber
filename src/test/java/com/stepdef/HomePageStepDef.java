@@ -19,17 +19,17 @@ public class HomePageStepDef {
 	@When("the user clicks on the {string} link")
 	public void the_user_clicks_on_the_link(String string) {
 	    hp = new HomePage();
-	    hp.AddRemove();
+	    hp.AddRemoveLink();
 	}
 
 	@Then("the {string} page should open")
 	public void the_page_should_open(String string) {
-	  Log.info("page is open");
+	 
 	}
 
 	@When("the user clicks on the {string} button")
 	public void the_user_clicks_on_the_button(String string) {
-	    hp.addElement();
+	    hp.addElementButton();
 	}
 
 	@Then("a new {string} button should appear on the page")
