@@ -33,12 +33,12 @@ public class HomePage extends DriverManager{
 		
 		
 	public void AddRemove() {
-		WaitUtils.clickWithFluentWait(addElementButton);
+		WaitUtils.clickWithFluentWait(addRemove);
 	}
 	
 	
 	public void addElement() {
-		WaitUtils.clickWithFluentWait(addRemove);
+		WaitUtils.clickWithFluentWait(addElementButton);
 	}
 			
 		
