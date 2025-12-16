@@ -212,15 +212,15 @@ public class DriverManager {
 
 	    // Cleanup utility you can call from @After
 	    public static synchronized void quitDriver() {
-//	        if (webDriver.get() != null) {
-//	            try {
-//	                webDriver.get().quit();
-//	            } catch (Exception e) {
-//	                // ignore
-//	            } finally {
-//	                webDriver.remove();
-//	            }
-//	        }
+	        if (webDriver.get() != null) {
+	            try {
+	                webDriver.get().quit();
+	            } catch (Exception e) {
+	                // ignore
+	            } finally {
+	                webDriver.remove();
+	            }
+	        }
 	    	System.out.println("For better debugging");
 	    }
 	

@@ -25,6 +25,9 @@ public class HomePage extends DriverManager{
 		WebElement addElementButton;
 		
 		
+		@FindBy(xpath = "//button[contains(normalize-space(.),'Delete')]")
+		WebElement delete;
+		
 		public HomePage(){
 			
 			PageFactory.initElements(webDriver.get(), this);
@@ -46,6 +49,11 @@ public class HomePage extends DriverManager{
 			WaitUtils.clickWithFluentWait(addElementButton);
 		
 		
+	}
+	
+	public void deleteElement() {
+		WaitUtils.clickWithFluentWait(delete);
+		Log.info("User deleted the element");
 	}
 			
 		

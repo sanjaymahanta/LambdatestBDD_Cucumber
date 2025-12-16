@@ -1,2 +1,9 @@
-[2025-11-12 17:06:13] INFO  Log - click on add/remove link
-[2025-11-12 17:06:13] INFO  Log - Page is open
+[2025-12-16 20:04:25] INFO  Log - click on add/remove link
+[2025-12-16 20:04:25] INFO  Log - Page is open
+[2025-12-16 20:04:26] INFO  WebDriverManager - Using chromedriver 143.0.7499.42 (resolved driver for Chrome 143)
+[2025-12-16 20:04:26] INFO  WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\meena\.cache\selenium\chromedriver\win64\143.0.7499.42\chromedriver.exe
+[2025-12-16 20:04:44] INFO  Log - click on add/remove link
+[2025-12-16 20:04:44] INFO  Log - Page is open
+[2025-12-16 20:04:44] INFO  Log - User has added a new element before deletion
+[2025-12-16 20:04:44] INFO  Log - Page is open
+[2025-12-16 20:04:45] INFO  Log - User deleted the element
