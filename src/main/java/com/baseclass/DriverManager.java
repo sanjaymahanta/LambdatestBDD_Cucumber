@@ -162,51 +162,44 @@ public class DriverManager {
 	    }
 
 	    private static void createLambdaTestDriver(String browser) {
-	        String username = Util.properties("config", "lambdatest_username");
-	        String accessKey = Util.properties("config", "lambdatest_accessKey");
+	    	  String username  = Util.properties("config", "lambdatest_username");
+	    	    String accessKey = Util.properties("config", "lambdatest_access_key");
 
-	        // LambdaTest Hub URL
-	        String gridURL = "https://" + username + ":" + accessKey + "@hub.lambdatest.com/wd/hub";
+	    	    String gridURL = "https://" + username + ":" + accessKey + "@hub.lambdatest.com/wd/hub";
 
-	        MutableCapabilities ltOptions = new MutableCapabilities();
-	        ltOptions.setCapability("build", "PeopleGrove Automation Build");
-	        ltOptions.setCapability("project", "Career Portal Tests");
-	        ltOptions.setCapability("name", "Career Navigation Test");
-	        ltOptions.setCapability("visual", true);
-	        ltOptions.setCapability("video", true);
-	        ltOptions.setCapability("network", true);
-	        ltOptions.setCapability("console", "true");
+	    	    MutableCapabilities ltOptions = new MutableCapabilities();
+	    	    ltOptions.setCapability("build", "Jenkins Build");
+	    	    ltOptions.setCapability("project", "BDD Cucumber");
+	    	    ltOptions.setCapability("video", true);
+	    	    ltOptions.setCapability("network", true);
+	    	    ltOptions.setCapability("console", true);
 
-	        WebDriver driver = null;
+	    	    try {
+	    	        MutableCapabilities options;
 
-	        try {
-	            if ("chrome".equalsIgnoreCase(browser)) {
-	                ChromeOptions options = new ChromeOptions();
-	                options.setCapability("platformName", "Windows 11");
-	                options.setCapability("browserVersion", "latest");
-	                options.setCapability("LT:Options", ltOptions);
-	                driver = new RemoteWebDriver(new URL(gridURL), options);
-	            } else if ("firefox".equalsIgnoreCase(browser)) {
-	                FirefoxOptions options = new FirefoxOptions();
-	                options.setCapability("platformName", "Windows 11");
-	                options.setCapability("browserVersion", "latest");
-	                options.setCapability("LT:Options", ltOptions);
-	                driver = new RemoteWebDriver(new URL(gridURL), options);
-	            } else if ("edge".equalsIgnoreCase(browser)) {
-	                EdgeOptions options = new EdgeOptions();
-	                options.setCapability("platformName", "Windows 11");
-	                options.setCapability("browserVersion", "latest");
-	                options.setCapability("LT:Options", ltOptions);
-	                driver = new RemoteWebDriver(new URL(gridURL), options);
-	            } else {
-	                throw new RuntimeException("Unsupported browser for LambdaTest: " + browser);
-	            }
+	    	        switch (browser.toLowerCase()) {
+	    	            case "chrome":
+	    	                options = new ChromeOptions();
+	    	                break;
+	    	            case "firefox":
+	    	                options = new FirefoxOptions();
+	    	                break;
+	    	            case "edge":
+	    	                options = new EdgeOptions();
+	    	                break;
+	    	            default:
+	    	                throw new RuntimeException("Unsupported browser: " + browser);
+	    	        }
 
-	            webDriver.set(driver);
+	    	        options.setCapability("platformName", "Windows 11");
+	    	        options.setCapability("browserVersion", "latest");
+	    	        options.setCapability("LT:Options", ltOptions);
 
-	        } catch (Exception e) {
-	            throw new RuntimeException("Failed to initialize LambdaTest remote driver", e);
-	        }
+	    	        webDriver.set(new RemoteWebDriver(new URL(gridURL), options));
+
+	    	    } catch (Exception e) {
+	    	        throw new RuntimeException("❌ LambdaTest driver init failed", e);
+	    	    }
 	    }
 
 

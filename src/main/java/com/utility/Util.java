@@ -13,46 +13,51 @@ import com.baseclass.DriverManager;
 
 public class Util {
 
-    public static String properties(String fileName, String key) {
-        Properties props = new Properties();
+	 public static String properties(String fileName, String key) {
+	        Properties props = new Properties();
 
-        // Try multiple locations for flexibility
-        String[] possiblePaths = {
-            "AppConfig/" + fileName + ".properties",
-            "src/test/resources/AppConfig/" + fileName + ".properties",
-            "./" + fileName + ".properties"
-        };
+	        // ✅ 1. Jenkins / Maven -D se pehle read karo
+	        String sysValue = System.getProperty(key);
+	        if (sysValue != null && !sysValue.isEmpty()) {
+	            System.out.println("🔹 " + key + " (System Property)");
+	            return sysValue.trim();
+	        }
 
-        File found = null;
-        for (String path : possiblePaths) {
-            File f = new File(path);
-            if (f.exists()) {
-                found = f;
-                break;
-            }
-        }
+	        // ✅ 2. Config file fallback (local run)
+	        String[] possiblePaths = {
+	                "AppConfig/" + fileName + ".properties",
+	                "src/test/resources/AppConfig/" + fileName + ".properties"
+	        };
 
-        if (found == null) {
-            throw new RuntimeException(" Could not find " + fileName + ".properties in any known path.");
-        }
+	        File found = null;
+	        for (String path : possiblePaths) {
+	            File f = new File(path);
+	            if (f.exists()) {
+	                found = f;
+	                break;
+	            }
+	        }
 
-        System.out.println(" Loading config from: " + found.getAbsolutePath());
+	        if (found == null) {
+	            throw new RuntimeException("❌ Could not find " + fileName + ".properties");
+	        }
 
-        try (FileInputStream fis = new FileInputStream(found)) {
-            props.load(fis);
-        } catch (IOException e) {
-            throw new RuntimeException(" Failed to load: " + found.getAbsolutePath(), e);
-        }
+	        try (FileInputStream fis = new FileInputStream(found)) {
+	            props.load(fis);
+	        } catch (IOException e) {
+	            throw new RuntimeException("❌ Failed to load config file", e);
+	        }
 
-        String value = props.getProperty(key);
-        if (value == null) {
-            throw new RuntimeException("⚠ Missing property '" + key + "' in file: " + found.getAbsolutePath());
-        }
+	        String value = props.getProperty(key);
+	        if (value == null || value.isEmpty()) {
+	            throw new RuntimeException(
+	                    "⚠ Missing property '" + key + "' in " + found.getAbsolutePath()
+	            );
+	        }
 
-        value = value.trim();
-        System.out.println("🔹 " + key + " = " + value);
-        return value;
-    }
+	        System.out.println("🔹 " + key + " = " + value);
+	        return value.trim();
+	    }
 
     public static byte[] takeScreenShot() {
         WebDriver driver = DriverManager.webDriver.get();
